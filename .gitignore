@@ -218,3 +218,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Raw source media and documents kept in the repo root
+# (web copies live in videos/ and assets/)
+/*.mp4
+/*.MP4
+/*.mov
+/*.MOV
+/*.pdf
+/*.png
+/*.jpg
+/*.JPG
+.DS_Store
