@@ -27,11 +27,14 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/img/hero-napoleon-wide.webp" type="image/webp" media="(min-width: 900px)" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/img/hero-napoleon-tall.webp" type="image/webp" media="(max-width: 899.98px)" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="preload" as="image" type="image/webp" media="(min-width: 900px)" fetchpriority="high"
+        imagesrcset="assets/img/hero-napoleon-wide-1600.webp 1600w, assets/img/hero-napoleon-wide-2400.webp 2400w, assets/img/hero-napoleon-wide-3600.webp 3600w"
+        imagesizes="(min-width: 1600px) 1600px, 100vw">
+  <link rel="preload" as="image" href="assets/img/hero-napoleon-tall-1200.webp" type="image/webp" media="(max-width: 899.98px)" fetchpriority="high">
+  <!-- Bump ?v= on both files whenever either changes, so returning visitors do not mix old and new. -->
+  <link rel="stylesheet" href="assets/css/site.css?v=4">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/site.js?v=4" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,10 +74,17 @@
           </p>
         </div>
 
-        <picture class="hero__art">
-          <source media="(max-width: 899.98px)" srcset="assets/img/hero-napoleon-tall.webp" type="image/webp" width="1200" height="1600">
-          <img src="assets/img/hero-napoleon-wide.webp" width="2400" height="1350" alt="Napoleon on a rearing horse, pointing up the mountain pass, from Jacques-Louis David’s painting, printed as a two-tone blue halftone." fetchpriority="high" decoding="async">
-        </picture>
+        <!-- The script stacks the true-colour plate over this one: the same
+             file names with "-colour" after "wide" or "tall". -->
+        <div class="hero__art" data-live>
+          <picture>
+            <source media="(max-width: 899.98px)" srcset="assets/img/hero-napoleon-tall-1200.webp" type="image/webp" width="1200" height="1600">
+            <img class="hero__plate" src="assets/img/hero-napoleon-wide-2400.webp"
+                 srcset="assets/img/hero-napoleon-wide-1600.webp 1600w, assets/img/hero-napoleon-wide-2400.webp 2400w, assets/img/hero-napoleon-wide-3600.webp 3600w"
+                 sizes="(min-width: 1600px) 1600px, 100vw"
+                 width="2400" height="1350" alt="Napoleon on a rearing horse, pointing up the mountain pass, from Jacques-Louis David’s painting, printed as a two-tone blue halftone." fetchpriority="high" decoding="async">
+          </picture>
+        </div>
 
         <figure class="win hero__win hero__win--hand" style="--i:0">
           <figcaption class="win__bar"><span class="win__name">Detail, the raised hand</span></figcaption>

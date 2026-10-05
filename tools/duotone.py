@@ -297,10 +297,53 @@ def tone_map(rgb: Image.Image, cov: np.ndarray, mask: Image.Image | None, args) 
     return t.astype(np.float32)
 
 
+def final_fade(args, w: int, h: int) -> tuple[np.ndarray, tuple | None]:
+    """The last edge fade (exact flat blue / transparent at the border) and the
+    per-edge fade widths it was built from (None without --vignette)."""
+    fades = vignette_px(args, w, h, 0.5)
+    if fades:
+        # every edge gets at least a short final fade so the border is exact
+        fades = tuple(max(f, 0.02 * min(w, h)) for f in fades)
+        return edge_mask(h, w, fades, args.vignette_margin), fades
+    return np.ones((h, w), dtype=np.float32), None
+
+
+def cutout(rgb: Image.Image, cov: np.ndarray, mask: Image.Image | None, args) -> Image.Image:
+    """True-colour partner of a masked plate: the framed picture in its own
+    colours, with everything that sends the duotone to flat blue (subject mask,
+    source-edge fade, --vignette) written to the alpha channel instead. Same
+    framing code as the duotone, so the two register pixel for pixel."""
+    w, h = rgb.size
+    a = np.ones((h, w), dtype=np.float32)
+    if mask is not None:
+        m = gaussian(np.asarray(mask, dtype=np.float32) / 255.0, args.mask_feather)
+        if args.cutout_feather > 0:
+            # pull the edge in by about the feather width and soften it, so no
+            # rim of the original background is left around the subject
+            m = smoothstep((gaussian(m, args.cutout_feather) - 0.5) * 2.0)
+        a *= args.bg + (1.0 - args.bg) * m
+    if cov.min() < 0.999:
+        fade_px = max(1.0, args.pad_fade * w)
+        inside = gaussian(cov, fade_px / 2.5)
+        a *= smoothstep((inside - 0.5) * 2.0) * (cov > 0.5)
+    fades = vignette_px(args, w, h)
+    if fades:
+        a *= edge_mask(h, w, fades, args.vignette_margin)
+    a *= final_fade(args, w, h)[0]
+    a8 = np.clip(np.rint(a * 255), 0, 255).astype(np.uint8)
+    px = np.asarray(rgb).copy()
+    px[a8 == 0] = np.clip(np.rint(args.blue), 0, 255).astype(np.uint8)  # nothing odd under full transparency
+    im = Image.fromarray(px)
+    im.putalpha(Image.fromarray(a8))
+    return im
+
+
 def render(args) -> Image.Image:
     rgb, cov, mask = load_and_frame(args)
     if args.clean:
         return rgb
+    if args.cutout:
+        return cutout(rgb, cov, mask, args)
 
     w, h = rgb.size
     t = tone_map(rgb, cov, mask, args)
@@ -330,13 +373,7 @@ def render(args) -> Image.Image:
     v = np.clip(v, 0.0, 1.0)
 
     # final edge fade: guarantees exact flat blue at the border
-    fades = vignette_px(args, w, h, 0.5)
-    if fades:
-        # every edge gets at least a short final fade so the border is exact
-        fades = tuple(max(f, 0.02 * min(w, h)) for f in fades)
-        fin = edge_mask(h, w, fades, args.vignette_margin)
-    else:
-        fin = np.ones((h, w), dtype=np.float32)
+    fin, fades = final_fade(args, w, h)
     v = v * fin
 
     blue, light, deep = args.blue, args.light, args.deep
@@ -464,6 +501,12 @@ def build_parser() -> argparse.ArgumentParser:
                    help="with --vignette: also write the edge fade to the alpha channel (webp/png)")
     g.add_argument("--clean", action="store_true",
                    help="skip the treatment: only crop, resize and strip metadata")
+    g.add_argument("--cutout", action="store_true",
+                   help="skip the treatment and keep the colours, but write --mask, the source-edge "
+                        "fade and --vignette to the alpha channel (webp/png): the true-colour "
+                        "partner of a plate rendered with the same framing options")
+    g.add_argument("--cutout-feather", type=float, default=2.0,
+                   help="with --cutout: how far the mask edge is pulled in and softened, output px")
     return p
 
 

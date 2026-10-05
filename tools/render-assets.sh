@@ -20,15 +20,33 @@ mkdir -p "$OUT/img" "$OUT/posters"
 NAPOLEON=(--mix 1,0,0 --levels 0.34,0.90 --gamma 1.2 --mask "$MASK")
 
 if want hero; then
-  # Wide: figure right of centre, the left third is flat blue for the headline.
-  # The crop box runs past the left edge of the painting; that part is flat blue.
-  "${DUO[@]}" "$PAINTING" "$OUT/img/hero-napoleon-wide.webp" \
-    --width 2400 --height 1350 --crop=-591,120,3427,2380 "${NAPOLEON[@]}" \
-    --blur 2.0 --vignette 0.05,0.04,0.05,0.30 --alpha --quality 70
-  # Tall: the whole horse and rider.
-  "${DUO[@]}" "$PAINTING" "$OUT/img/hero-napoleon-tall.webp" \
-    --width 1200 --height 1600 --crop=-110,-235,3400,4445 "${NAPOLEON[@]}" \
-    --blur 1.3 --glow-radius 10 --vignette 0.05,0.05,0.05,0.07 --alpha --quality 74
+  # Each plate is rendered twice from the same framing: the blue halftone, and
+  # its true-colour partner (--cutout) that the page reveals on hover. Both get
+  # the figure mask and the edge fade, so they register pixel for pixel.
+  #
+  # Wide (16:9): figure right of centre, the left third is flat blue for the
+  # headline. The crop box runs past the left edge of the painting; that part
+  # is flat blue. Three widths for srcset. Blur, glow radius, grain size and
+  # the exact-blue margin are scaled with the width, and the dither cell is
+  # chosen so there are 1600-1800 cells across the plate in every rendition:
+  # about 1 to 1.6 device pixels each on the screen that rendition is served to.
+  WIDE=(--crop=-591,120,3427,2380 --vignette 0.05,0.04,0.05,0.30)
+  HALF=("${NAPOLEON[@]}" --glow 0.3 --grain 0.7 --alpha)
+  wide() { # width height blur glow-radius grain-size cell margin quality cutout-feather colour-quality
+    "${DUO[@]}" "$PAINTING" "$OUT/img/hero-napoleon-wide-$1.webp" --width "$1" --height "$2" "${WIDE[@]}" "${HALF[@]}" \
+      --blur "$3" --glow-radius "$4" --grain-size "$5" --cell "$6" --vignette-margin "$7" --quality "$8"
+    "${DUO[@]}" "$PAINTING" "$OUT/img/hero-napoleon-wide-colour-$1.webp" --width "$1" --height "$2" "${WIDE[@]}" \
+      --mask "$MASK" --cutout --cutout-feather "$9" --vignette-margin "$7" --quality "${10}"
+  }
+  wide 3600 2025 0.9  13 1.5 2   9 66 4   80
+  wide 2400 1350 0.6   9 1.2 1.5 6 68 2.7 80
+  wide 1600  900 0.45  6 1   1   4 74 1.8 82
+  # Tall (3:4), for phones: the whole horse and rider.
+  TALL=(--width 1200 --height 1600 --crop=-110,-235,3400,4445 --vignette 0.05,0.05,0.05,0.07)
+  "${DUO[@]}" "$PAINTING" "$OUT/img/hero-napoleon-tall-1200.webp" "${TALL[@]}" "${HALF[@]}" \
+    --blur 0.45 --glow-radius 5 --grain-size 1 --quality 72
+  "${DUO[@]}" "$PAINTING" "$OUT/img/hero-napoleon-tall-colour-1200.webp" "${TALL[@]}" \
+    --mask "$MASK" --cutout --cutout-feather 1.4 --quality 82
 fi
 
 if want details; then
