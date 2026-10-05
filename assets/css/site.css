@@ -146,7 +146,25 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
   white-space: nowrap;
   transition: color .2s, border-color .2s;
 }
-.win > img { width: 100%; }
+.win > img,
+.win__pic > img { width: 100%; }
+
+/* True colour under the pointer. The script stacks the real picture over the
+   halftone (lazy-loaded, and only where a pointer can hover); it fades in on
+   hover and on keyboard focus of the play button, and out again on leaving. */
+.win__pic { position: relative; }
+.win__colour {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+figure.win { transition: border-color .2s; }
 
 /* feed windows: the project clips */
 .win--feed { transition: border-color .2s; }
@@ -177,7 +195,17 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
 /* Chrome fills an unloaded player with dark grey; keep it clear so the poster shows */
 .win__screen video::-webkit-media-controls { background-color: transparent; }
 .js .win--feed[data-state="idle"] .win__poster,
-.js .win--feed[data-state="loading"] .win__poster { z-index: 2; }
+.js .win--feed[data-state="loading"] .win__poster,
+.win--feed[data-state="idle"] .win__colour,
+.win--feed[data-state="loading"] .win__colour { z-index: 2; }
+
+.win--feed.is-colour[data-state="idle"] .win__colour.is-ready { opacity: 1; }
+@media (hover: hover) {
+  .win:hover > .win__pic > .win__colour.is-ready,
+  .win--feed[data-state="idle"]:hover .win__colour.is-ready,
+  .win--feed[data-state="loading"]:hover .win__colour.is-ready { opacity: 1; }
+  figure.win:hover { border-color: var(--light); }
+}
 
 .win__play {
   position: absolute;
@@ -215,7 +243,7 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
 .win__play:hover .win__chip,
 .win__play:focus-visible .win__chip { background: var(--blue); color: var(--light); }
 
-/* live: the only moment a window is in true colour */
+/* live: the clip itself is playing */
 .win--feed[data-state="live"] { border-color: var(--light); }
 .win--feed[data-state="live"] .win__bar { background: var(--light); color: var(--blue); }
 .win--feed[data-state="live"] .win__cell { color: var(--blue); border-color: rgba(31, 74, 168, .35); }
@@ -259,7 +287,14 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
   font-size: 1.125rem;
   line-height: 1.5;
 }
-.hero__go { order: 5; margin-top: 1.4rem; }
+.hero__go {
+  order: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem 1.5rem;
+  margin-top: 1.4rem;
+}
 .hero__credit {
   order: 6;
   margin-top: 2rem;
@@ -281,6 +316,31 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
 }
 .button:hover,
 .button:focus-visible { background: var(--light); color: var(--blue); text-decoration: none; }
+
+/* download link: the label, then the file type and size */
+.dl__meta {
+  margin-left: .45em;
+  color: var(--mist);
+  font-size: .875em;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: color .15s;
+}
+.dl:not(.button) {
+  display: inline-block;
+  padding-block: .55rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.dl:not(.button) .dl__label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+  text-decoration-color: var(--line-strong);
+}
+.dl:not(.button):hover .dl__label { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
+.button:hover .dl__meta,
+.button:focus-visible .dl__meta { color: inherit; }
 
 @media (min-width: 40rem) and (max-width: 56.24rem) {
   .hero__stage {
@@ -400,8 +460,6 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
 }
 .section__head p { color: var(--mist); max-width: 34rem; }
 
-.nb { white-space: nowrap; }
-
 /* Bodoni's hairlines thin out as its optical size rises. Sentence-sized
    display text is pinned to a low optical size so the hairlines hold up
    in light on blue. */
@@ -439,24 +497,23 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
   font-variant-numeric: tabular-nums;
 }
 
-.pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(3.5rem, 8vw, 7rem); }
+.pair, .duo { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(3.5rem, 8vw, 7rem); }
 .feed--tall .win { width: min(100%, 17rem); }
 .feed--small .win { width: min(100%, 19rem); }
 
 @media (min-width: 40rem) {
-  /* two windows share a row at equal height: each grows by its aspect ratio */
-  .pair:not(.pair--tall) { display: flex; align-items: flex-start; gap: var(--gap); }
   .pair > .feed { flex: var(--ar) 1 0; min-width: 0; }
   .feed--tall { grid-template-columns: 17rem minmax(0, 1fr); align-items: end; }
 
   .feed__text--cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); max-width: none; }
 
-  .feed--small { grid-template-columns: minmax(0, 1fr) 19rem; align-items: end; }
-  .feed--small .win { order: 2; width: 100%; }
-  .feed--small .feed__text { justify-self: end; max-width: 26rem; text-align: right; }
+  /* the two simulation clips: the long one large, the 5 second loop beside it */
+  .duo { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 1.25rem var(--gap); align-items: start; }
+  .feed--small .win { width: 100%; }
 }
 
 @media (min-width: 60rem) {
+  /* two windows share a row at equal height: each grows by its aspect ratio */
   .pair--tall { display: flex; align-items: flex-start; gap: var(--gap); }
   .feed--tall { grid-template-columns: minmax(0, 1fr); }
   .feed--tall .win { width: 100%; }
@@ -464,12 +521,23 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
 
 @media (min-width: 64rem) {
   .feed--side { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: end; }
-  .feed--flip { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
-  .feed--flip .win { order: 2; }
   .feed__text--cols { grid-template-columns: minmax(0, 5fr) minmax(0, 4fr); gap: calc(var(--gap) * 2); }
   .feed--lead .feed__text { margin-top: .5rem; }
-  .feed--small { grid-template-columns: minmax(0, 1fr) 24rem; }
-  .feed--small .lede { font-size: clamp(1.6rem, 2.5vw, 2.2rem); }
+
+  /* The loop's column is exactly as tall as the large window: its sentence
+     starts level with that window's top, its own window ends level with the
+     bottom. The large clip's text sits on the row below. */
+  .duo { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); grid-template-rows: auto auto; }
+  .duo > .feed:first-child { grid-row: 1 / span 2; grid-template-rows: subgrid; }
+  .duo > .feed--small {
+    grid-row: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .duo > .feed--small .feed__text { order: -1; }
+  .feed--small .lede { font-size: clamp(1.5rem, 2.3vw, 2.1rem); }
 }
 
 /* ---------- about ---------- */
@@ -478,39 +546,25 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
 .about__portrait { width: min(100%, 20rem); }
 .about__body { display: grid; gap: 1.4rem; align-content: start; }
 .statement {
-  font: 400 clamp(1.6rem, 3vw, 2.6rem)/1.15 var(--serif);
+  font: 400 clamp(1.6rem, 3.6vw, 4rem)/1.12 var(--serif);
   font-variation-settings: "opsz" 20;
   letter-spacing: -.01em;
   max-width: 22em;
   text-wrap: balance;
 }
 .about__more { max-width: 36rem; }
-.about__sub {
-  margin-top: clamp(1.5rem, 3vw, 2.5rem);
-  font: 400 clamp(1.6rem, 2.4vw, 2.1rem)/1.1 var(--serif);
-  font-variation-settings: "opsz" 20;
-}
-.creds { list-style: none; border-top: 1px solid var(--line); }
-.creds li {
-  display: grid;
-  gap: .1rem 1.5rem;
-  padding: .9rem 0;
-  border-bottom: 1px solid var(--line);
-}
-.creds__who { font-weight: 600; }
-.creds__when { color: var(--mist); font-variant-numeric: tabular-nums; }
+.about__cv { margin-top: .4rem; }
 
 @media (min-width: 48rem) {
+  /* heading level with the top of the portrait, the text ending level with its foot */
   .about { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); grid-template-rows: auto 1fr; align-items: start; }
   .about__portrait { grid-column: 1; grid-row: 1 / span 2; width: 100%; max-width: 24rem; }
   .about > h2, .about__body { grid-column: 2; }
-  .creds li { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-  .creds__who { grid-row: span 2; }
+  .about__body { align-self: end; }
 }
 @media (min-width: 72rem) {
-  .creds li { grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) 15.5rem; }
-  .creds__who { grid-row: auto; }
-  .creds__when { text-align: right; white-space: nowrap; }
+  .about { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); }
+  .about__portrait { max-width: 22rem; }
 }
 
 /* ---------- contact ---------- */
@@ -522,7 +576,7 @@ a:hover { text-decoration-color: var(--light); text-decoration-thickness: 2px; }
 .contact__kind { color: var(--mist); font-size: .9375rem; }
 .contact__links a {
   justify-self: start;
-  font: 400 clamp(1.45rem, 6.4vw, 3rem)/1.15 var(--serif);
+  font: 400 clamp(1.25rem, 5.5vw, 3rem)/1.15 var(--serif);
   font-variation-settings: "opsz" 14;
   overflow-wrap: anywhere;
   text-underline-offset: .16em;

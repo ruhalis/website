@@ -1,5 +1,6 @@
 /* baikurazov.com
-   Feed windows: a blue halftone poster while idle, true colour while playing.
+   Feed windows: a blue halftone poster while idle, the real footage while playing.
+   Picture and feed windows also show their true-colour image under the pointer.
    Without this script each window is still a plain <video controls> over its poster. */
 (function () {
   'use strict';
@@ -147,5 +148,54 @@
     } else {
       feeds.push(new Feed(win));
     }
+  });
+
+  /* True colour under the pointer: each holder names its colour picture in
+     data-colour. The picture is stacked over the halftone, same box and same
+     crop, and the stylesheet fades it in on hover or keyboard focus. It is
+     created after the page has loaded, lazy, and only where a pointer can
+     hover, so phones never download it and first paint never waits for it. */
+  function addColour(holder) {
+    if (holder.querySelector('.win__colour')) return;
+    var blue = holder.querySelector('img');
+    var img = document.createElement('img');
+    img.className = 'win__colour';
+    img.alt = '';
+    img.setAttribute('aria-hidden', 'true');
+    img.decoding = 'async';
+    img.loading = 'lazy';
+    img.width = blue.width;
+    img.height = blue.height;
+    img.addEventListener('load', function () { img.classList.add('is-ready'); });
+    img.src = holder.dataset.colour;
+    blue.after(img);
+  }
+
+  var holders = document.querySelectorAll('[data-colour]');
+  function addAll() { holders.forEach(addColour); }
+  if (window.matchMedia('(hover: hover)').matches) {
+    if (document.readyState === 'complete') addAll();
+    else window.addEventListener('load', addAll);
+  }
+
+  /* Focus counts as "looking at" a window only when it arrived by keyboard:
+     a clip that ends hands focus back to its play button, and after a mouse
+     click that must not leave the window in colour. */
+  var byKeyboard = false;
+  document.addEventListener('keydown', function () { byKeyboard = true; }, true);
+  document.addEventListener('pointerdown', function () { byKeyboard = false; }, true);
+
+  holders.forEach(function (holder) {
+    var win = holder.closest('.win');
+    win.addEventListener('pointerenter', function (event) {
+      if (event.pointerType === 'mouse') addColour(holder);
+    });
+    win.addEventListener('focusin', function (event) {
+      if (byKeyboard && event.target.classList.contains('win__play')) {
+        addColour(holder);
+        win.classList.add('is-colour');
+      }
+    });
+    win.addEventListener('focusout', function () { win.classList.remove('is-colour'); });
   });
 })();

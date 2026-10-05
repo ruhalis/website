@@ -39,6 +39,12 @@ if want details; then
   # no mask here: the rock is the subject; less blur keeps the lettering readable
   "${DUO[@]}" "$PAINTING" "$OUT/img/detail-inscription.webp" --width 800 --height 600 --quality 70 \
     --crop=0,3520,800,4120 --mix 0.5,0.4,0.1 --levels 0.22,0.62 --gamma 1.0 --contrast 0.5 --blur 0.9 --glow 0.25
+  # true-colour partners for the hover reveal: the same crop boxes, so they register over the halftones
+  C=(--width 800 --height 600 --clean --quality 82)
+  "${DUO[@]}" "$PAINTING" "$OUT/img/detail-face.jpg"        "${C[@]}" --crop=1850,480,2650,1080
+  "${DUO[@]}" "$PAINTING" "$OUT/img/detail-hand.jpg"        "${C[@]}" --crop=1380,290,1980,740
+  "${DUO[@]}" "$PAINTING" "$OUT/img/detail-horse-eye.jpg"   "${C[@]}" --crop=930,520,1730,1120
+  "${DUO[@]}" "$PAINTING" "$OUT/img/detail-inscription.jpg" "${C[@]}" --crop=0,3520,800,4120
 fi
 
 if want portrait; then
@@ -57,10 +63,8 @@ if want posters; then
     "${DUO[@]}" "$TMP/$name.png" "$OUT/posters/$name-blue.webp" --long-side 1280 --quality 68 "$@"
   }
   # Dark robots on pale floors/screens are inverted so the robot is the light subject.
-  poster overhead-gantry-manipulator            27.94 --invert --auto-levels 55,99.8 --gamma 0.9
   poster pickup-policy-rl                        0.31 --auto-levels 35,99.5
   poster safety-person-detection-isaacsim       21.38 --auto-levels 35,99.5
-  poster teleoperation-via-3d-camera             9.01 --auto-levels 15,99 --gamma 1.25 --contrast 0.5
   poster unitree-g1-slam-nav                     5.36 --invert --auto-levels 45,99.5
   poster unitree-g1-voice-control                5.84 --auto-levels 35,99.5
   poster unitree-g1-web-control                100.24 --invert --auto-levels 45,99.5
