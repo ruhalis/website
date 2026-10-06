@@ -178,7 +178,6 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 .hero__name span + span { padding-left: 0.72em; }
 
 .hero__role { margin-bottom: .6rem; color: var(--saxe); }
-.hero__teach { max-width: 24rem; color: var(--ink); margin-bottom: .6rem; }
 .hero__intro { max-width: 24rem; color: var(--mute); margin-bottom: 1.4rem; }
 .hero__go { display: flex; flex-wrap: wrap; gap: .5rem 2.25rem; }
 
