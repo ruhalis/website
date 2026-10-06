@@ -28,3 +28,5 @@ only colour field, one dark burgundy band.
   from tools/dark-posters.py. The ring SVG is cropped like the picture (cover, top-aligned).
 - site.js: one clip plays at a time, the 5 s loop plays while on screen with a Pause switch in
   its caption; without JS every clip is a plain <video controls>. 404.html restyled to match.
+
+Video posters are plain dark greyscale with no vignette.
