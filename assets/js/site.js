@@ -7,7 +7,6 @@
 
   var RING = '<svg viewBox="0 0 60 60" aria-hidden="true" focusable="false">' +
     '<circle cx="30" cy="30" r="27"/><path d="M26 23.5l9 6.5-9 6.5z"/></svg>';
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var feeds = [];
 
   function clock(seconds) {
@@ -94,58 +93,7 @@
     this.time.textContent = 'Could not load';
   };
 
-  /* The 5 second silent clip plays by itself while it is on screen,
-     with a quiet text switch in its caption line instead of a ring. */
-  function Loop(work) {
-    var self = this;
-    this.work = work;
-    this.video = work.querySelector('video');
-    this.name = work.closest('.work').querySelector('.work__title').textContent;
-    this.wanted = true;
-    this.visible = false;
-    this.video.controls = false;
-    this.video.muted = true;
-    this.video.tabIndex = -1;
-    this.toggle = document.createElement('button');
-    this.toggle.type = 'button';
-    this.toggle.className = 'loop-toggle';
-    work.querySelector('.plate__cap').appendChild(this.toggle);
-    work.dataset.state = 'idle';
-    this.label();
-
-    this.toggle.addEventListener('click', function () {
-      self.wanted = !self.wanted;
-      self.sync();
-    });
-    this.video.addEventListener('playing', function () { work.dataset.state = 'live'; });
-
-    new IntersectionObserver(function (entries) {
-      self.visible = entries[entries.length - 1].isIntersecting;
-      self.sync();
-    }, { threshold: 0.4 }).observe(work.querySelector('.plate__screen'));
-  }
-
-  Loop.prototype.label = function () {
-    this.toggle.textContent = this.wanted ? 'Pause' : 'Play';
-    this.toggle.setAttribute('aria-label', (this.wanted ? 'Pause the ' : 'Play the ') + this.name + ' loop');
-  };
-
-  Loop.prototype.sync = function () {
-    this.label();
-    if (this.wanted && this.visible) {
-      var started = this.video.play();
-      if (started && started.catch) started.catch(function () {});
-    } else {
-      this.video.pause();
-      if (!this.wanted && this.work.dataset.state === 'live') this.work.dataset.state = 'paused';
-    }
-  };
-
   document.querySelectorAll('[data-feed]').forEach(function (work) {
-    if (work.hasAttribute('data-loop') && !reducedMotion && 'IntersectionObserver' in window) {
-      new Loop(work);
-    } else {
-      feeds.push(new Feed(work));
-    }
+    feeds.push(new Feed(work));
   });
 })();

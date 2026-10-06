@@ -36,7 +36,7 @@ only colour field, one dark burgundy band.
   body; system monospace for labels, captions and the footer.
 - Assets: assets/img/hero-halo-{800,1400}.webp from tools/halo-hero.py; assets/posters/*-dark.webp
   from tools/dark-posters.py. The ring SVG is cropped like the picture (cover, top-aligned).
-- site.js: one clip plays at a time, the 5 s loop plays while on screen with a Pause switch in
-  its caption; without JS every clip is a plain <video controls>. 404.html restyled to match.
+- site.js: one clip plays at a time and nothing autoplays (the 5 s pick-up clip loops once started);
+  without JS every clip is a plain <video controls>. 404.html restyled to match.
 
 Video posters are plain dark greyscale with no vignette.
