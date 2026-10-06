@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found | Arlan Baikurazov</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#1f4aa8">
+  <meta name="theme-color" content="#eceae4">
   <!-- GitHub Pages serves this file at any missing address, however deep,
        so its links are resolved from the site root. -->
   <base href="/">
@@ -15,25 +15,26 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=4">
+  <link rel="stylesheet" href="assets/css/site.css?v=5">
 </head>
 <body>
-  <header class="top top--static">
-    <a class="top__home" href="./">baikurazov.com</a>
+  <header class="top">
+    <nav aria-label="Sections">
+      <ul class="top__nav">
+        <li><a class="top__home" href="./">baikurazov.com</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="lost">
-    <div class="wrap lost__in">
-      <div class="lost__body">
-        <h1>Page not found</h1>
-        <p>There is nothing at this address. The projects, with their videos, are on the home page.</p>
-        <a class="button" href="./">Go to the home page</a>
+    <figure class="oculus">
+      <div class="oculus__ring">
+        <img class="oculus__img" src="assets/img/oculus.webp" width="1040" height="1300" alt="Napoleon on a rearing horse, pointing up into a cloudy sky, from Jacques-Louis David’s “Napoleon Crossing the Alps”, printed in pale Saxon blue." decoding="async">
       </div>
-      <figure class="win">
-        <figcaption class="win__bar"><span class="win__name">Detail, the horse</span></figcaption>
-        <img src="assets/img/detail-horse-eye.webp" width="800" height="600" alt="Close crop of the horse’s head and wide eye from “Napoleon Crossing the Alps”, as a blue halftone." decoding="async">
-      </figure>
-    </div>
+    </figure>
+    <h1>Page not found</h1>
+    <p>There is nothing at this address. The projects, with their videos, are on the home page.</p>
+    <p><a class="link" href="./">Go to the home page</a></p>
   </main>
 </body>
 </html>

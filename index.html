@@ -6,7 +6,7 @@
   <title>Arlan Baikurazov, robotics engineer</title>
   <meta name="description" content="Portfolio of Arlan Baikurazov, robotics engineer. Mapping and navigation for humanoid and quadruped robots, manipulation and simulation, with a video of each project.">
   <link rel="canonical" href="https://baikurazov.com/">
-  <meta name="theme-color" content="#1f4aa8">
+  <meta name="theme-color" content="#eceae4">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://baikurazov.com/">
@@ -27,14 +27,10 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" type="image/webp" media="(min-width: 900px)" fetchpriority="high"
-        imagesrcset="assets/img/hero-napoleon-wide-1600.webp 1600w, assets/img/hero-napoleon-wide-2400.webp 2400w, assets/img/hero-napoleon-wide-3600.webp 3600w"
-        imagesizes="(min-width: 1600px) 1600px, 100vw">
-  <link rel="preload" as="image" href="assets/img/hero-napoleon-tall-1200.webp" type="image/webp" media="(max-width: 899.98px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/oculus.webp" type="image/webp" fetchpriority="high">
   <!-- Bump ?v= on both files whenever either changes, so returning visitors do not mix old and new. -->
-  <link rel="stylesheet" href="assets/css/site.css?v=4">
-  <script>document.documentElement.classList.add('js');</script>
-  <script src="assets/js/site.js?v=4" defer></script>
+  <link rel="stylesheet" href="assets/css/site.css?v=5">
+  <script src="assets/js/site.js?v=5" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,10 +47,10 @@
   <a class="skip" href="#projects">Skip to the projects</a>
 
   <header class="top">
-    <a class="top__home" href="./">baikurazov.com</a>
     <nav aria-label="Sections">
       <ul class="top__nav">
         <li><a href="#projects">Projects</a></li>
+        <li><a class="top__home" href="./">baikurazov.com</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -63,256 +59,172 @@
 
   <main>
     <section class="hero" aria-labelledby="name">
-      <div class="hero__stage">
-        <div class="hero__text">
-          <h1 class="hero__name" id="name"><span>Arlan</span> <span>Baikurazov</span></h1>
-          <p class="hero__role">Robotics engineer</p>
-          <p class="hero__intro">I make robots do useful work: map a building, walk to a goal, check a corridor for faults, call the lift.</p>
-          <p class="hero__go">
-            <a class="button" href="#projects">Watch the projects</a>
-            <a class="dl" href="assets/Arlan-Baikurazov-CV.pdf" download><span class="dl__label">Download CV</span> <span class="dl__meta">PDF, 64 KB</span></a>
-          </p>
+      <figure class="oculus">
+        <div class="oculus__ring">
+          <img class="oculus__img" src="assets/img/oculus.webp" width="1040" height="1300"
+               alt="Napoleon on a rearing horse, pointing up into a cloudy sky, from Jacques-Louis David’s painting, printed in pale Saxon blue and seen through an oval opening." fetchpriority="high" decoding="async">
         </div>
+        <figcaption class="credit">Jacques-Louis David, “Napoleon Crossing the Alps”, 1801</figcaption>
+      </figure>
 
-        <!-- The script stacks the true-colour plate over this one: the same
-             file names with "-colour" after "wide" or "tall". -->
-        <div class="hero__art" data-live>
-          <picture>
-            <source media="(max-width: 899.98px)" srcset="assets/img/hero-napoleon-tall-1200.webp" type="image/webp" width="1200" height="1600">
-            <img class="hero__plate" src="assets/img/hero-napoleon-wide-2400.webp"
-                 srcset="assets/img/hero-napoleon-wide-1600.webp 1600w, assets/img/hero-napoleon-wide-2400.webp 2400w, assets/img/hero-napoleon-wide-3600.webp 3600w"
-                 sizes="(min-width: 1600px) 1600px, 100vw"
-                 width="2400" height="1350" alt="Napoleon on a rearing horse, pointing up the mountain pass, from Jacques-Louis David’s painting, printed as a two-tone blue halftone." fetchpriority="high" decoding="async">
-          </picture>
-        </div>
-
-        <figure class="win hero__win hero__win--hand" style="--i:0">
-          <figcaption class="win__bar"><span class="win__name">Detail, the raised hand</span></figcaption>
-          <div class="win__pic" data-colour="assets/img/detail-hand.jpg">
-            <img src="assets/img/detail-hand.webp" width="800" height="600" alt="Close crop of the rider’s raised, pointing hand." decoding="async">
-          </div>
-        </figure>
-        <figure class="win hero__win hero__win--face" style="--i:1">
-          <figcaption class="win__bar"><span class="win__name">Detail, the rider</span></figcaption>
-          <div class="win__pic" data-colour="assets/img/detail-face.jpg">
-            <img src="assets/img/detail-face.webp" width="800" height="600" alt="Close crop of the rider’s face under a bicorne hat." decoding="async">
-          </div>
-        </figure>
-        <figure class="win hero__win hero__win--eye" style="--i:2">
-          <figcaption class="win__bar"><span class="win__name">Detail, the horse</span></figcaption>
-          <div class="win__pic" data-colour="assets/img/detail-horse-eye.jpg">
-            <img src="assets/img/detail-horse-eye.webp" width="800" height="600" alt="Close crop of the horse’s head and wide eye." decoding="async">
-          </div>
-        </figure>
-
-        <p class="hero__credit">Jacques-Louis David, “Napoleon Crossing the Alps”, 1801</p>
-      </div>
+      <h1 class="name" id="name"><span>Arlan</span> <span>Baikurazov</span></h1>
+      <p class="role">Robotics engineer</p>
+      <p class="intro">I make robots do useful work: map a building, walk to a goal, check a corridor for faults, call the lift.</p>
+      <p class="go">
+        <a class="link" href="#projects">Watch the projects</a>
+        <a class="link dl" href="assets/Arlan-Baikurazov-CV.pdf" download><span class="dl__label">Download CV</span> <span class="dl__meta">PDF, 64 KB</span></a>
+      </p>
     </section>
 
     <section class="section" id="projects" aria-labelledby="projects-title">
-      <div class="wrap">
-        <header class="section__head">
-          <h2 id="projects-title">Projects</h2>
-          <p>Six recordings. Hover over a window, or press play, to see the real footage.</p>
+      <header class="section__head">
+        <h2 class="label" id="projects-title">Projects</h2>
+        <p class="section__note">Six recordings. Press play to see the footage.</p>
+      </header>
+
+      <article class="work" aria-labelledby="w-unitree-go2-inside-building-inspection">
+        <header class="work__head">
+          <h3 class="work__title" id="w-unitree-go2-inside-building-inspection">Go2 building inspection</h3>
+          <p class="work__meta"><span>3:22</span> <span aria-hidden="true">·</span> <span>Sound</span></p>
         </header>
-
-        <div class="feeds">
-
-          <article class="feed feed--lead">
-            <div class="win win--feed" data-feed>
-              <div class="win__bar">
-                <h3 class="win__name">Go2 building inspection</h3>
-                <span class="win__cell" data-time>3:22</span>
-                <span class="win__cell">Sound</span>
-              </div>
-              <div class="win__screen" style="--ar:1280/634" data-colour="assets/posters/unitree-go2-inside-building-inspection.jpg">
-                <img class="win__poster" src="assets/posters/unitree-go2-inside-building-inspection-blue.webp" width="1280" height="634" loading="lazy" decoding="async" alt="Frame from the clip: a floor map with the planned route beside the Go2 walking along a carpeted corridor.">
-                <video controls playsinline preload="none" width="1280" height="634" aria-label="Go2 building inspection, 3 minutes 22 seconds, with sound">
-                  <source src="videos/unitree-go2-inside-building-inspection.mp4" type="video/mp4">
-                  <a href="videos/unitree-go2-inside-building-inspection.mp4">Download the clip (MP4)</a>
-                </video>
-              </div>
-            </div>
-            <div class="feed__text feed__text--cols">
-              <div>
-                <p class="lede">A Unitree Go2 quadruped inspects a building on its own.</p>
-                <p>Inspection points are chosen in a web interface. The robot orders them from nearest to farthest and plans a path.</p>
-                <p>It checks ceiling lights (working, or only half working), confirms a fire extinguisher is in place, and looks for cracks in a wall.</p>
-              </div>
-              <div>
-                <p>Then it calls the lift:</p>
-                <ol class="steps">
-                  <li>aligns itself to an AprilTag</li>
-                  <li>presses the call button with a rod on a small servo arm</li>
-                  <li>docks inside</li>
-                  <li>presses the floor button</li>
-                  <li>exits on the destination floor</li>
-                </ol>
-                <p>A report is generated in the web interface and can be saved as PDF.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="feed feed--side">
-            <div class="win win--feed" data-feed>
-              <div class="win__bar">
-                <h3 class="win__name">G1 control from a phone</h3>
-                <span class="win__cell" data-time>2:26</span>
-                <span class="win__cell">Sound</span>
-              </div>
-              <div class="win__screen" style="--ar:16/9" data-colour="assets/posters/unitree-g1-web-control.jpg">
-                <img class="win__poster" src="assets/posters/unitree-g1-web-control-blue.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Frame from the clip: the G1 humanoid walking towards the camera, next to a phone screen with a map and control buttons.">
-                <video controls playsinline preload="none" width="1920" height="1080" aria-label="G1 control from a phone, 2 minutes 26 seconds, with sound">
-                  <source src="videos/unitree-g1-web-control.mp4" type="video/mp4">
-                  <a href="videos/unitree-g1-web-control.mp4">Download the clip (MP4)</a>
-                </video>
-              </div>
-            </div>
-            <div class="feed__text">
-              <p class="lede">A web app for the Unitree G1 humanoid, used from a phone.</p>
-              <p>Start SLAM with slam_toolbox and watch the occupancy map grow live while the robot walks. Save the map, then localise on a saved map and send the robot to goals.</p>
-            </div>
-          </article>
-
-          <div class="pair pair--tall">
-            <article class="feed" style="--ar:1.7778">
-              <div class="win win--feed" data-feed>
-                <div class="win__bar">
-                  <h3 class="win__name">G1 map-based navigation</h3>
-                  <span class="win__cell" data-time>1:26</span>
-                  <span class="win__cell">Sound</span>
-                </div>
-                <div class="win__screen" style="--ar:16/9" data-colour="assets/posters/unitree-g1-slam-nav.jpg">
-                  <img class="win__poster" src="assets/posters/unitree-g1-slam-nav-blue.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Frame from the clip: the G1 standing in a doorway, beside an occupancy-grid map with the planned path drawn on it.">
-                  <video controls playsinline preload="none" width="1920" height="1080" aria-label="G1 map-based navigation, 1 minute 26 seconds, with sound">
-                    <source src="videos/unitree-g1-slam-nav.mp4" type="video/mp4">
-                    <a href="videos/unitree-g1-slam-nav.mp4">Download the clip (MP4)</a>
-                  </video>
-                </div>
-              </div>
-              <div class="feed__text">
-                <p class="lede">The G1 walks from a room, along a corridor and into a lobby, following a planned path.</p>
-                <p>The occupancy-grid map and the path are shown beside the footage.</p>
-              </div>
-            </article>
-
-            <article class="feed feed--tall" style="--ar:.5625">
-              <div class="win win--feed" data-feed>
-                <div class="win__bar">
-                  <h3 class="win__name">G1 voice control</h3>
-                  <span class="win__cell" data-time>1:34</span>
-                  <span class="win__cell">Sound</span>
-                </div>
-                <div class="win__screen" style="--ar:9/16" data-colour="assets/posters/unitree-g1-voice-control.jpg">
-                  <img class="win__poster" src="assets/posters/unitree-g1-voice-control-blue.webp" width="720" height="1280" loading="lazy" decoding="async" alt="Frame from the clip: the G1 humanoid standing in a room, filmed upright on a phone.">
-                  <video controls playsinline preload="none" width="1080" height="1920" aria-label="G1 voice control, 1 minute 34 seconds, with sound">
-                    <source src="videos/unitree-g1-voice-control.mp4" type="video/mp4">
-                    <a href="videos/unitree-g1-voice-control.mp4">Download the clip (MP4)</a>
-                  </video>
-                </div>
-              </div>
-              <div class="feed__text">
-                <p class="lede">The G1 takes spoken commands.</p>
-                <p>It raises an arm, then walks out of the room, down the corridor and back.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="duo">
-            <article class="feed">
-              <div class="win win--feed win--chip-top" data-feed>
-                <div class="win__bar">
-                  <h3 class="win__name">Safety zone in Isaac Sim</h3>
-                  <span class="win__cell" data-time>0:49</span>
-                  <span class="win__cell">Silent</span>
-                </div>
-                <div class="win__screen" style="--ar:16/9" data-colour="assets/posters/safety-person-detection-isaacsim.jpg">
-                  <img class="win__poster" src="assets/posters/safety-person-detection-isaacsim-blue.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Frame from the clip: a simulated warehouse with a person boxed inside the marked zone around a manipulator, and the warning “HUMAN IN ZONE — STOP MANIPULATOR”.">
-                  <video controls playsinline preload="none" width="1920" height="1080" aria-label="Safety zone in Isaac Sim, 49 seconds, silent">
-                    <source src="videos/safety-person-detection-isaacsim.mp4" type="video/mp4">
-                    <a href="videos/safety-person-detection-isaacsim.mp4">Download the clip (MP4)</a>
-                  </video>
-                </div>
-              </div>
-              <div class="feed__text">
-                <p class="lede">A simulated warehouse with a marked zone around a manipulator.</p>
-                <p>When a detected person steps into the zone, the system raises “HUMAN IN ZONE — STOP MANIPULATOR”, and returns to “Zone: CLEAR” when they leave.</p>
-              </div>
-            </article>
-
-            <article class="feed feed--small">
-              <div class="win win--feed" data-feed data-loop>
-                <div class="win__bar">
-                  <h3 class="win__name">Pick-up policy</h3>
-                  <span class="win__cell" data-time>0:05</span>
-                  <span class="win__cell">Silent</span>
-                </div>
-                <div class="win__screen" style="--ar:16/9" data-colour="assets/posters/pickup-policy-rl.jpg">
-                  <img class="win__poster" src="assets/posters/pickup-policy-rl-blue.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Frame from the clip: a simulated robot arm reaching down to a small cube on a table.">
-                  <video controls muted loop playsinline preload="none" width="1280" height="720" aria-label="Pick-up policy, 5 second loop, silent">
-                    <source src="videos/pickup-policy-rl.mp4" type="video/mp4">
-                    <a href="videos/pickup-policy-rl.mp4">Download the clip (MP4)</a>
-                  </video>
-                </div>
-              </div>
-              <div class="feed__text">
-                <p class="lede">A reinforcement-learning policy picks a cube up off a table in simulation.</p>
-              </div>
-            </article>
-          </div>
-
+        <div class="work__frame" style="--ar:1280/634">
+          <video controls playsinline preload="none" width="1280" height="634" poster="assets/posters/unitree-go2-inside-building-inspection-pale.webp" aria-label="Go2 building inspection, 3 minutes 22 seconds, with sound">
+            <source src="videos/unitree-go2-inside-building-inspection.mp4" type="video/mp4">
+            <img src="assets/posters/unitree-go2-inside-building-inspection-pale.webp" width="1280" height="634" alt="Frame from the clip: a floor map with the planned route beside the Go2 walking along a carpeted corridor.">
+            <a href="videos/unitree-go2-inside-building-inspection.mp4">Download the clip (MP4)</a>
+          </video>
         </div>
-      </div>
+        <div class="work__text">
+          <p class="lede">A Unitree Go2 quadruped inspects a building on its own.</p>
+          <p>Inspection points are chosen in a web interface. The robot orders them from nearest to farthest and plans a path.</p>
+          <p>It checks ceiling lights (working, or only half working), confirms a fire extinguisher is in place, and looks for cracks in a wall.</p>
+          <p>Then it calls the lift:</p>
+          <ol class="steps">
+            <li>aligns itself to an AprilTag</li>
+            <li>presses the call button with a rod on a small servo arm</li>
+            <li>docks inside</li>
+            <li>presses the floor button</li>
+            <li>exits on the destination floor</li>
+          </ol>
+          <p>A report is generated in the web interface and can be saved as PDF.</p>
+        </div>
+      </article>
+
+      <article class="work" aria-labelledby="w-unitree-g1-web-control">
+        <header class="work__head">
+          <h3 class="work__title" id="w-unitree-g1-web-control">G1 control from a phone</h3>
+          <p class="work__meta"><span>2:26</span> <span aria-hidden="true">·</span> <span>Sound</span></p>
+        </header>
+        <div class="work__frame" style="--ar:16/9">
+          <video controls playsinline preload="none" width="1920" height="1080" poster="assets/posters/unitree-g1-web-control-pale.webp" aria-label="G1 control from a phone, 2 minutes 26 seconds, with sound">
+            <source src="videos/unitree-g1-web-control.mp4" type="video/mp4">
+            <img src="assets/posters/unitree-g1-web-control-pale.webp" width="1280" height="720" alt="Frame from the clip: the G1 humanoid walking towards the camera, next to a phone screen with a map and control buttons.">
+            <a href="videos/unitree-g1-web-control.mp4">Download the clip (MP4)</a>
+          </video>
+        </div>
+        <div class="work__text">
+          <p class="lede">A web app for the Unitree G1 humanoid, used from a phone.</p>
+          <p>Start SLAM with slam_toolbox and watch the occupancy map grow live while the robot walks. Save the map, then localise on a saved map and send the robot to goals.</p>
+        </div>
+      </article>
+
+      <article class="work" aria-labelledby="w-unitree-g1-slam-nav">
+        <header class="work__head">
+          <h3 class="work__title" id="w-unitree-g1-slam-nav">G1 map-based navigation</h3>
+          <p class="work__meta"><span>1:26</span> <span aria-hidden="true">·</span> <span>Sound</span></p>
+        </header>
+        <div class="work__frame" style="--ar:16/9">
+          <video controls playsinline preload="none" width="1920" height="1080" poster="assets/posters/unitree-g1-slam-nav-pale.webp" aria-label="G1 map-based navigation, 1 minute 26 seconds, with sound">
+            <source src="videos/unitree-g1-slam-nav.mp4" type="video/mp4">
+            <img src="assets/posters/unitree-g1-slam-nav-pale.webp" width="1280" height="720" alt="Frame from the clip: the G1 standing in a doorway, beside an occupancy-grid map with the planned path drawn on it.">
+            <a href="videos/unitree-g1-slam-nav.mp4">Download the clip (MP4)</a>
+          </video>
+        </div>
+        <div class="work__text">
+          <p class="lede">The G1 walks from a room, along a corridor and into a lobby, following a planned path.</p>
+          <p>The occupancy-grid map and the path are shown beside the footage.</p>
+        </div>
+      </article>
+
+      <article class="work work--tall" aria-labelledby="w-unitree-g1-voice-control">
+        <header class="work__head">
+          <h3 class="work__title" id="w-unitree-g1-voice-control">G1 voice control</h3>
+          <p class="work__meta"><span>1:34</span> <span aria-hidden="true">·</span> <span>Sound</span></p>
+        </header>
+        <div class="work__frame" style="--ar:9/16">
+          <video controls playsinline preload="none" width="1080" height="1920" poster="assets/posters/unitree-g1-voice-control-pale.webp" aria-label="G1 voice control, 1 minute 34 seconds, with sound">
+            <source src="videos/unitree-g1-voice-control.mp4" type="video/mp4">
+            <img src="assets/posters/unitree-g1-voice-control-pale.webp" width="720" height="1280" alt="Frame from the clip: the G1 humanoid standing in a room, filmed upright on a phone.">
+            <a href="videos/unitree-g1-voice-control.mp4">Download the clip (MP4)</a>
+          </video>
+        </div>
+        <div class="work__text">
+          <p class="lede">The G1 takes spoken commands.</p>
+          <p>It raises an arm, then walks out of the room, down the corridor and back.</p>
+        </div>
+      </article>
+
+      <article class="work" aria-labelledby="w-safety-person-detection-isaacsim">
+        <header class="work__head">
+          <h3 class="work__title" id="w-safety-person-detection-isaacsim">Safety zone in Isaac Sim</h3>
+          <p class="work__meta"><span>0:49</span> <span aria-hidden="true">·</span> <span>Silent</span></p>
+        </header>
+        <div class="work__frame" style="--ar:16/9">
+          <video controls playsinline preload="none" width="1920" height="1080" poster="assets/posters/safety-person-detection-isaacsim-pale.webp" aria-label="Safety zone in Isaac Sim, 49 seconds, silent">
+            <source src="videos/safety-person-detection-isaacsim.mp4" type="video/mp4">
+            <img src="assets/posters/safety-person-detection-isaacsim-pale.webp" width="1280" height="720" alt="Frame from the clip: a simulated warehouse with a person boxed inside the marked zone around a manipulator, and the warning “HUMAN IN ZONE — STOP MANIPULATOR”.">
+            <a href="videos/safety-person-detection-isaacsim.mp4">Download the clip (MP4)</a>
+          </video>
+        </div>
+        <div class="work__text">
+          <p class="lede">A simulated warehouse with a marked zone around a manipulator.</p>
+          <p>When a detected person steps into the zone, the system raises “HUMAN IN ZONE — STOP MANIPULATOR”, and returns to “Zone: CLEAR” when they leave.</p>
+        </div>
+      </article>
+
+      <article class="work work--small" aria-labelledby="w-pickup-policy-rl">
+        <header class="work__head">
+          <h3 class="work__title" id="w-pickup-policy-rl">Pick-up policy</h3>
+          <p class="work__meta"><span>0:05</span> <span aria-hidden="true">·</span> <span>Silent</span></p>
+        </header>
+        <div class="work__frame" style="--ar:16/9">
+          <video controls playsinline preload="none" muted loop width="1280" height="720" poster="assets/posters/pickup-policy-rl-pale.webp" aria-label="Pick-up policy, 5 second loop, silent">
+            <source src="videos/pickup-policy-rl.mp4" type="video/mp4">
+            <img src="assets/posters/pickup-policy-rl-pale.webp" width="1280" height="720" alt="Frame from the clip: a simulated robot arm reaching down to a small cube on a table.">
+            <a href="videos/pickup-policy-rl.mp4">Download the clip (MP4)</a>
+          </video>
+        </div>
+        <div class="work__text">
+          <p class="lede">A reinforcement-learning policy picks a cube up off a table in simulation.</p>
+        </div>
+      </article>
     </section>
 
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="wrap about">
-        <h2 id="about-title">About</h2>
-        <figure class="win about__portrait">
-          <figcaption class="win__bar"><span class="win__name">Arlan Baikurazov</span></figcaption>
-          <div class="win__pic" data-colour="assets/img/portrait.jpg">
-            <img src="assets/img/portrait-blue.webp" width="667" height="1000" loading="lazy" decoding="async" alt="Arlan Baikurazov standing with his arms crossed, printed as a blue halftone.">
-          </div>
-        </figure>
-
-        <div class="about__body">
-          <p class="statement">I work on robot autonomy: mapping and navigation for humanoid and quadruped robots, manipulation and simulation.</p>
-          <p class="about__more">From February to May 2026 I worked as a robotics engineer at XBOT, the authorised Unitree Robotics distributor in Almaty.</p>
-          <p class="about__cv">
-            <a class="button dl" href="assets/Arlan-Baikurazov-CV.pdf" download><span class="dl__label">Download CV</span> <span class="dl__meta">PDF, 64 KB</span></a>
-          </p>
-        </div>
-      </div>
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <h2 class="label" id="about-title">About</h2>
+      <img class="about__portrait" src="assets/img/portrait-pale.webp" width="560" height="560" decoding="async" alt="Arlan Baikurazov, head and shoulders, printed in pale Saxon blue.">
+      <p class="statement">I work on robot autonomy: mapping and navigation for humanoid and quadruped robots, manipulation and simulation.</p>
+      <p class="about__more">From February to May 2026 I worked as a robotics engineer at XBOT, the authorised Unitree Robotics distributor in Almaty.</p>
+      <p class="go">
+        <a class="link dl" href="assets/Arlan-Baikurazov-CV.pdf" download><span class="dl__label">Download CV</span> <span class="dl__meta">PDF, 64 KB</span></a>
+      </p>
     </section>
 
-    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
-      <div class="wrap contact">
-        <div class="contact__body">
-          <h2 id="contact-title">Contact</h2>
-          <!-- Contact links. To add one, copy a line and change the three parts. -->
-          <ul class="contact__links">
-            <li><span class="contact__kind">Email</span> <a href="mailto:arlan.baikurazov@gmail.com">arlan.baikurazov@gmail.com</a></li>
-            <li><span class="contact__kind">GitHub</span> <a href="https://github.com/ruhalis" rel="me">github.com/ruhalis</a></li>
-            <li><span class="contact__kind">LinkedIn</span> <a href="https://www.linkedin.com/in/arlan-baikurazov/" rel="me">linkedin.com/in/arlan-baikurazov</a></li>
-            <li><span class="contact__kind">Telegram</span> <a href="https://t.me/ruhalis" rel="me">@ruhalis</a></li>
-          </ul>
-        </div>
-
-        <figure class="win contact__rock">
-          <figcaption class="win__bar"><span class="win__name">Detail, names cut in the rock</span></figcaption>
-          <div class="win__pic" data-colour="assets/img/detail-inscription.jpg">
-            <img src="assets/img/detail-inscription.webp" width="800" height="600" loading="lazy" decoding="async" alt="Close crop of the rock in the painting’s foreground, carved with the name BONAPARTE and, below it, part of ANNIBAL.">
-          </div>
-        </figure>
-      </div>
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <h2 class="label" id="contact-title">Contact</h2>
+      <!-- Contact links. To add one, copy a line and change the three parts. -->
+      <ul class="contact__links">
+        <li><span class="contact__kind">Email</span> <a href="mailto:arlan.baikurazov@gmail.com">arlan.baikurazov@gmail.com</a></li>
+        <li><span class="contact__kind">GitHub</span> <a href="https://github.com/ruhalis" rel="me">github.com/ruhalis</a></li>
+        <li><span class="contact__kind">LinkedIn</span> <a href="https://www.linkedin.com/in/arlan-baikurazov/" rel="me">linkedin.com/in/arlan-baikurazov</a></li>
+        <li><span class="contact__kind">Telegram</span> <a href="https://t.me/ruhalis" rel="me">@ruhalis</a></li>
+      </ul>
     </section>
   </main>
 
   <footer class="foot">
-    <div class="wrap foot__in">
-      <p>“Napoleon Crossing the Alps”, Jacques-Louis David, 1801 (Château de Malmaison version). Public domain, rendered as a halftone.</p>
-      <p>© 2026 Arlan Baikurazov</p>
-    </div>
+    <p>“Napoleon Crossing the Alps”, Jacques-Louis David, 1801 (Château de Malmaison version). Public domain, rendered as a pale blue duotone.</p>
+    <p>© 2026 Arlan Baikurazov</p>
   </footer>
 </body>
 </html>
