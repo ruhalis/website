@@ -33,8 +33,8 @@ only colour field, one dark burgundy band.
 
 - Palette: field #000; band #3a0c14; accent Saxe blue #4F7CAC (rings, link underlines, focus);
   text #ece7dc, muted #8f877a (#a99e8e on the band); rules rgba(143,135,122,.26).
-- Type: Bodoni Moda for the name, section and plate titles and the About statement; IBM Plex Sans
-  body; system monospace for labels, captions and the footer.
+- Type: Bodoni Moda for the name and the About statement; Montserrat Light (300) for the Projects
+  heading, plate titles and body; system monospace for labels, captions and the footer.
 - Assets: assets/img/hero-halo-{800,1400}.webp from tools/halo-hero.py; assets/posters/*-dark.webp
   from tools/dark-posters.py. The ring SVG is cropped like the picture (cover, top-aligned).
 - site.js: one clip plays at a time and nothing autoplays (the 5 s pick-up clip loops once started);
