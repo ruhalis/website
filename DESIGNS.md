@@ -57,3 +57,7 @@ Same page as `claude/design-13-saxe-halo`; only text colours change. Side by sid
 
 Contrast: Saxe blue on black is 4.8:1. The legible burgundy on black is 2.9:1, fine for the large titles but low for the
 small role line in 13c and 13d; `#c0546a` would reach 4.7:1 if that line should stay burgundy.
+
+## Chosen
+
+Design 13d, with the poster vignette removed, is merged into `main` and is the live site. Its branch `claude/design-13d-blue-burgundy` carries the same commits.
