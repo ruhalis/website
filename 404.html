@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found | Arlan Baikurazov</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#1f4aa8">
+  <meta name="theme-color" content="#efe9dc">
   <!-- GitHub Pages serves this file at any missing address, however deep,
        so its links are resolved from the site root. -->
   <base href="/">
@@ -15,25 +15,26 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=4">
+  <link rel="stylesheet" href="assets/css/site.css?v=5">
 </head>
 <body>
-  <header class="top top--static">
-    <a class="top__home" href="./">baikurazov.com</a>
-  </header>
+  <div class="sheet">
+    <header class="top">
+      <a class="top__home" href="./">baikurazov.com</a>
+    </header>
 
-  <main class="lost">
-    <div class="wrap lost__in">
-      <div class="lost__body">
-        <h1>Page not found</h1>
-        <p>There is nothing at this address. The projects, with their videos, are on the home page.</p>
-        <a class="button" href="./">Go to the home page</a>
-      </div>
-      <figure class="win">
-        <figcaption class="win__bar"><span class="win__name">Detail, the horse</span></figcaption>
-        <img src="assets/img/detail-horse-eye.webp" width="800" height="600" alt="Close crop of the horse’s head and wide eye from “Napoleon Crossing the Alps”, as a blue halftone." decoding="async">
-      </figure>
-    </div>
-  </main>
+    <main class="lost">
+      <p class="kicker">Off the map</p>
+      <h1>Page not found</h1>
+      <p>There is nothing at this address. The projects, with their videos, are on the home page.</p>
+      <a class="act" href="./">Go to the home page</a>
+      <svg class="compass lost__mark" viewBox="-4 -14 72 82" aria-hidden="true" focusable="false">
+        <path class="compass__arm" d="M32 0v64M0 32h64" />
+        <path class="compass__n" d="M32 3l3 27h-6z" />
+        <circle cx="32" cy="32" r="2.6" />
+        <text x="32" y="-4">N</text>
+      </svg>
+    </main>
+  </div>
 </body>
 </html>
