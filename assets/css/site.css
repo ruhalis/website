@@ -169,7 +169,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 .hero__name {
   font: 400 clamp(3.4rem, 8.2vw, 8rem)/0.92 var(--serif);
   letter-spacing: -0.012em;
-  color: var(--ink);
+  color: var(--saxe);            /* 13a: the name rhymes with the ring */
   margin-bottom: 1.75rem;
 }
 .hero__name span { display: block; }
@@ -407,6 +407,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 .lost { min-height: 100svh; }
 .lost h1 {
   font: 400 clamp(2.5rem, 6vw, 4.5rem)/1 var(--serif);
+  color: var(--saxe);
   margin-bottom: 1.5rem;
 }
 .lost .hero__text p { max-width: 24rem; color: var(--mute); margin-bottom: 1.5rem; }
