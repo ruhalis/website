@@ -1,4 +1,16 @@
-# Design 13: Saxe halo
+# Design 13c: Burgundy titles (variant of 13, Saxe halo)
+
+Variant: identical to design 13 except for text colour. The legible burgundy #9c2f44 colours the
+"Projects" heading, the six small-caps plate titles and the "Robotics engineer" role line; the
+hairline above each plate is the same burgundy at 45% alpha (rgba(156,47,68,.45), ~#46151f on black).
+The name stays off-white #ece7dc, the halo ring stays Saxe blue. On the #3a0c14 band the About and
+Contact headings keep design 13's light colour (#a99e8e), since burgundy on burgundy disappears.
+Captions, body and links are unchanged.
+WCAG contrast: #9c2f44 on #000 2.90:1 (display sizes only; the 11px role line is below the 4.5:1
+small-text target, a lighter #c0546a would give 4.72:1); #ece7dc on #000 17.03:1; #4F7CAC on #000
+4.81:1; #ece7dc on #3a0c14 13.71:1; #a99e8e on #3a0c14 6.41:1.
+
+## Base: design 13, Saxe halo
 
 Concept: design 05's dark rider, design 01's stepped name and design 07's plates, on pure black.
 The rider from David's "Napoleon Crossing the Alps" is a very dark greyscale cut-out dissolving

@@ -25,6 +25,8 @@
   --ink: #ece7dc;                /* 17:1 on black */
   --mute: #8f877a;               /* 5.7:1 on black, 4.8:1 on the band */
   --rule: rgba(143, 135, 122, .26);
+  --claret: #9c2f44;             /* legible burgundy for titles on black: 2.9:1 */
+  --claret-rule: rgba(156, 47, 68, .45);
   --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
@@ -175,7 +177,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 .hero__name span { display: block; }
 .hero__name span + span { padding-left: 0.72em; }
 
-.hero__role { margin-bottom: .6rem; }
+.hero__role { margin-bottom: .6rem; color: var(--claret); }
 .hero__intro { max-width: 24rem; color: var(--mute); margin-bottom: 1.4rem; }
 .hero__go { display: flex; flex-wrap: wrap; gap: .5rem 2.25rem; }
 
@@ -209,6 +211,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   font: 400 clamp(1.6rem, 2.6vw, 2.1rem)/1.1 var(--serif);
   font-variant-caps: small-caps;
   letter-spacing: .06em;
+  color: var(--claret);
 }
 .projects__head .label { letter-spacing: .08em; text-transform: none; }
 
@@ -227,11 +230,11 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   font: 500 1.45rem/1.15 var(--serif);
   font-variant-caps: small-caps;
   letter-spacing: .04em;
-  color: var(--ink);
+  color: var(--claret);
   margin-bottom: .8rem;
 }
 
-.plate { padding-top: .75rem; border-top: 1px solid var(--rule); }
+.plate { padding-top: .75rem; border-top: 1px solid var(--claret-rule); }
 .plate__screen {
   position: relative;
   aspect-ratio: var(--ar, 16 / 9);
