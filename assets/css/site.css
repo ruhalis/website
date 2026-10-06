@@ -1,7 +1,7 @@
 /* baikurazov.com — "Saxe halo"
-   Ink-navy field. The rider from David's painting, dark greyscale, dissolves into it;
+   Pure black. The rider from David's painting, dark greyscale, dissolves into it;
    one thin Saxe-blue ring around his head. The six projects follow at once as two
-   columns of plates. One navy band carries About and Contact; headings are brass. */
+   columns of plates. One dark burgundy band carries About and Contact. */
 
 @font-face {
   font-family: "Bodoni Moda";
@@ -19,14 +19,13 @@
 }
 
 :root {
-  --field: #11151b;              /* ink-navy page */
-  --band: #1c2b40;               /* the one navy band */
-  --screen: #000;                /* behind the footage, so the dark posters stay seamless */
-  --saxe: #7ea3cf;               /* accent: rings, underlines, focus, name, captions (7.0:1 on the field) */
-  --brass: #d0a861;              /* headings and plate titles (8.2:1 on the field, 6.4:1 on the band) */
-  --ink: #ece8df;                /* 15:1 on the field */
-  --mute: #9a9a95;               /* 6.5:1 on the field, 5.1:1 on the band */
-  --rule: rgba(154, 154, 149, .24);
+  --black: #000;
+  --wine: #5a1828;               /* the one burgundy band */
+  --saxe: #6e9bd1;               /* accent: rings, underlines, focus, name, captions (7.3:1 on black) */
+  --claret: #c8506a;             /* burgundy for headings and plate titles (4.8:1 on black) */
+  --ink: #f3efe6;                /* 18:1 on black */
+  --mute: #aaa294;               /* 8.3:1 on black, 5.2:1 on the band */
+  --rule: rgba(170, 162, 148, .32);
   --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
@@ -38,7 +37,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  background: var(--field);
+  background: var(--black);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
@@ -47,7 +46,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--field);
+  background: var(--black);
   color: var(--ink);
   font: 400 0.9375rem/1.7 var(--sans);
   -webkit-font-smoothing: antialiased;
@@ -86,7 +85,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   top: -4rem;
   z-index: 10;
   padding: .5rem .75rem;
-  background: var(--field);
+  background: var(--black);
   color: var(--ink);
 }
 .skip:focus { top: 1rem; }
@@ -130,8 +129,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   bottom: 0;
   width: 66.6667%;
   pointer-events: none;
-  /* the plate keeps dissolving into the field below it; screen drops its baked-in black */
-  mix-blend-mode: screen;
+  /* the plate keeps dissolving into the black below it */
   -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
   mask-image: linear-gradient(to bottom, #000 62%, transparent);
 }
@@ -140,6 +138,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   height: 100%;
   object-fit: cover;
   object-position: 50% 0;       /* = the SVG's xMidYMin slice */
+  filter: brightness(1.6) contrast(1.05);   /* lift the rider; black stays black */
 }
 
 .halo {
@@ -189,7 +188,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   bottom: 1.25rem;
   font-size: 0.625rem;
   letter-spacing: 0.12em;
-  color: #808186;            /* 4.7:1 on the field */
+  color: #857e73;               /* 5.2:1 on black */
   text-transform: none;
 }
 
@@ -212,7 +211,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   font: 400 clamp(1.6rem, 2.6vw, 2.1rem)/1.1 var(--serif);
   font-variant-caps: small-caps;
   letter-spacing: .06em;
-  color: var(--brass);
+  color: var(--claret);
 }
 .projects__head .label { letter-spacing: .08em; text-transform: none; }
 
@@ -231,7 +230,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   font: 500 1.45rem/1.15 var(--serif);
   font-variant-caps: small-caps;
   letter-spacing: .04em;
-  color: var(--brass);
+  color: var(--claret);
   margin-bottom: .8rem;
 }
 
@@ -239,7 +238,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 .plate__screen {
   position: relative;
   aspect-ratio: var(--ar, 16 / 9);
-  background: var(--screen);
+  background: var(--black);
 }
 .plate--tall .plate__screen { max-width: min(100%, 19rem); }
 .plate__screen > img,
@@ -249,8 +248,9 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: var(--screen);
+  background: var(--black);
 }
+.plate__screen > img { filter: brightness(1.25); }   /* posters a step lighter than the footage's black */
 .plate__poster { display: none; }
 
 .plate__cap {
@@ -334,9 +334,9 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 }
 .loop-toggle:hover { text-decoration-color: var(--ink); }
 
-/* ---------- the navy band: about, contact ---------- */
+/* ---------- the burgundy band: about, contact ---------- */
 .band {
-  background: var(--band);
+  background: var(--wine);
   margin-top: clamp(3rem, 8vh, 6rem);
   padding: clamp(3.5rem, 9vh, 6.5rem) var(--side);
   display: grid;
@@ -352,9 +352,9 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   margin-bottom: 1.25rem;
 }
 #about .quiet { margin-bottom: 1.5rem; }
-.band .quiet { color: #b3b6ba; }   /* a touch lighter on the navy: 7.0:1 */
-.band .label { color: #b3b6ba; }
-.band h2.label { color: var(--saxe); }   /* headings on the band: Saxe, 5.5:1 */
+.band .quiet { color: #cdbfb0; }   /* a touch lighter on the burgundy: 7.3:1 */
+.band .label { color: #cdbfb0; }
+.band h2.label { color: var(--saxe); }   /* headings on the band: Saxe, 4.6:1 */
 
 .contact li {
   display: grid;
