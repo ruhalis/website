@@ -21,10 +21,10 @@
 :root {
   --black: #000;
   --wine: #5a1828;               /* the one burgundy band */
-  --saxe: #6e9bd1;               /* accent: rings, underlines, focus, name, captions (7.3:1 on black) */
-  --claret: #c8506a;             /* burgundy for headings and plate titles (4.8:1 on black) */
-  --ink: #f3efe6;                /* 18:1 on black */
-  --mute: #aaa294;               /* 8.3:1 on black, 5.2:1 on the band */
+  --saxe: #84aee3;               /* accent: rings, underlines, focus, name, captions (9.1:1 on black) */
+  --claret: #dc5f7b;             /* burgundy for headings and plate titles (6.0:1 on black) */
+  --ink: #f8f5ef;                /* 19:1 on black */
+  --mute: #bdb5a8;               /* 10:1 on black, 6.5:1 on the band */
   --rule: rgba(170, 162, 148, .32);
   --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -139,6 +139,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   object-fit: cover;
   object-position: 50% 0;       /* = the SVG's xMidYMin slice */
   position: relative;
+  filter: brightness(1.4) contrast(1.08);   /* brighter lights on the rider without crushing his darks */
   mix-blend-mode: screen;       /* the rider's shadows lift into the navy glow behind him */
 }
 /* a navy glow behind the rider only, fading to black before the plate's edges */
@@ -168,7 +169,8 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
     stroke-dashoffset: 100;
     animation: halo 3.6s cubic-bezier(.45, 0, .2, 1) .7s forwards;
   }
-  .hero__art img { animation: rise 2.4s ease-out both; }
+  .hero__art img,
+  .hero__art::before { animation: rise 2.4s ease-out both; }   /* the glow comes up with the rider */
 }
 @keyframes halo { to { stroke-dashoffset: 0; } }
 @keyframes rise { from { opacity: 0; } to { opacity: 1; } }
@@ -348,7 +350,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 #about .quiet { margin-bottom: 1.5rem; }
 .band .quiet { color: #cdbfb0; }   /* a touch lighter on the burgundy: 7.3:1 */
 .band .label { color: #cdbfb0; }
-.band h2.label { color: var(--saxe); }   /* headings on the band: Saxe, 4.6:1 */
+.band h2.label { color: var(--saxe); }   /* headings on the band: Saxe, 5.7:1 */
 
 .contact li {
   display: grid;
