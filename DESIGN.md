@@ -4,9 +4,9 @@ Variant: design 13d with more contrast so the page reads less dark. Field stays 
 band is a visible burgundy #5a1828 (was #3a0c14); headings and plate titles #dc5f7b (6.0:1, was
 #9c2f44 at 2.9:1); Saxe #84aee3 (9.1:1, was #4F7CAC); ink #f8f5ef; muted #bdb5a8 (10:1); band
 muted #cdbfb0 (7.3:1 on the band); Saxe on the band 5.7:1; hero credit #857e73 (5.2:1); rules
-rgba(170,162,148,.32). The hero rider is given brightness(1.4) contrast(1.08) and screen-blended over a navy #11151b radial glow that
-fades to black before the plate's edges, so his shadows lift to a soft cool grey (the 13e look)
-while the page stays black; the posters get brightness(1.25). Design 13e (ink-navy and
+rgba(170,162,148,.32). The hero rider is lifted with filter: brightness(1.6) contrast(1.05)
+on the black field (no glow behind him); the posters get brightness(1.25); black stays black,
+so nothing seams. A navy glow behind the rider was tried and dropped. Design 13e (ink-navy and
 brass) was tried and reverted.
 
 ## Previous: design 13d

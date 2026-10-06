@@ -138,16 +138,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   height: 100%;
   object-fit: cover;
   object-position: 50% 0;       /* = the SVG's xMidYMin slice */
-  position: relative;
-  filter: brightness(1.4) contrast(1.08);   /* brighter lights on the rider without crushing his darks */
-  mix-blend-mode: screen;       /* the rider's shadows lift into the navy glow behind him */
-}
-/* a navy glow behind the rider only, fading to black before the plate's edges */
-.hero__art::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 50% 62% at 55% 36%, #11151b 0%, #11151b 50%, rgba(17, 21, 27, 0) 100%);
+  filter: brightness(1.6) contrast(1.05);   /* lift the rider; black stays black */
 }
 
 .halo {
@@ -169,8 +160,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
     stroke-dashoffset: 100;
     animation: halo 3.6s cubic-bezier(.45, 0, .2, 1) .7s forwards;
   }
-  .hero__art img,
-  .hero__art::before { animation: rise 2.4s ease-out both; }   /* the glow comes up with the rider */
+  .hero__art img { animation: rise 2.4s ease-out both; }
 }
 @keyframes halo { to { stroke-dashoffset: 0; } }
 @keyframes rise { from { opacity: 0; } to { opacity: 1; } }
