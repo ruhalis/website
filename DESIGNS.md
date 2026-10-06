@@ -25,3 +25,21 @@ Hero screens of all ten, side by side: `design-contact-sheet.jpg`.
 - Old blue halftone assets remain in the repo on every branch, unused by most of the designs.
 
 To try one locally: `git checkout <branch> && npx http-server -p 8080 .`
+
+## Round 2: variations on the liked elements
+
+Combines the stepped name from 01, the line engraving from 02, the dark rider with a ring from 05 and the
+two-column plates grid from 07. Palette restricted to black, darker burgundy and Saxe blue `#4F7CAC`.
+Hero screens side by side: `design-contact-sheet-2.jpg`.
+
+| # | Branch | Field | Hero art | Blue used for |
+|---|--------|-------|----------|---------------|
+| 11 | `claude/design-11-engraving-black` | black `#0b0b0c` | off-white line engraving, right | role line, underlines, live dot |
+| 12 | `claude/design-12-engraving-burgundy` | burgundy `#3f0e18` | rose-cream line engraving with a thin blue circle | circle, underlines, live dot |
+| 13 | `claude/design-13-saxe-halo` | black `#000`, burgundy About band | dark greyscale rider dissolving into black, blue ring | ring, play rings, underlines |
+| 14 | `claude/design-14-halo-burgundy` | burgundy `#3a0c14` | rose-cream rider dissolving into burgundy, blue ring | ring, play rings, underlines |
+| 15 | `claude/design-15-blue-burin` | black `#000`, burgundy About band | wide engraving drawn in Saxe-blue lines, name over the fade | the engraving itself, grid rules |
+| 16 | `claude/design-16-two-fields` | black hero over a burgundy body | dark greyscale rider with blue ring; small engraving in Contact | ring, underlines, live dot |
+
+Notes: Saxe blue on these dark fields is about 3.7 to 4.5:1, so link text stays off-white with a blue underline.
+The line-screen engravings can show faint moiré at some zoom levels; each branch ships two or three sizes to limit it.
