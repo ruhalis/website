@@ -43,3 +43,17 @@ Hero screens side by side: `design-contact-sheet-2.jpg`.
 
 Notes: Saxe blue on these dark fields is about 3.7 to 4.5:1, so link text stays off-white with a blue underline.
 The line-screen engravings can show faint moiré at some zoom levels; each branch ships two or three sizes to limit it.
+
+## Round 3: text-colour variants of design 13
+
+Same page as `claude/design-13-saxe-halo`; only text colours change. Side by side: `design-contact-sheet-3.jpg`.
+
+| Branch | Saxe blue `#4F7CAC` text | Burgundy `#9c2f44` text |
+|--------|--------------------------|-------------------------|
+| `claude/design-13a-blue-name` | the stepped name | none |
+| `claude/design-13b-blue-titles` | role line, section headings, plate titles, captions, contact labels | none |
+| `claude/design-13c-burgundy-titles` | none (ring only) | section heading, plate titles, role line; plate rules at 45% |
+| `claude/design-13d-blue-burgundy` | name, role line, captions, About/Contact headings | Projects heading, plate titles |
+
+Contrast: Saxe blue on black is 4.8:1. The legible burgundy on black is 2.9:1, fine for the large titles but low for the
+small role line in 13c and 13d; `#c0546a` would reach 4.7:1 if that line should stay burgundy.
