@@ -138,7 +138,15 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   height: 100%;
   object-fit: cover;
   object-position: 50% 0;       /* = the SVG's xMidYMin slice */
-  filter: brightness(1.6) contrast(1.05);   /* lift the rider; black stays black */
+  position: relative;
+  mix-blend-mode: screen;       /* the rider's shadows lift into the navy glow behind him */
+}
+/* a navy glow behind the rider only, fading to black before the plate's edges */
+.hero__art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 62% at 55% 36%, #11151b 0%, #11151b 50%, rgba(17, 21, 27, 0) 100%);
 }
 
 .halo {
