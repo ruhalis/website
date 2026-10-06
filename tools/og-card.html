@@ -1,0 +1,29 @@
+<!-- Source for assets/og.jpg: copy this file to the site root, serve the site, and screenshot it at 1200x630. -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="assets/css/site.css?v=5">
+<style>
+  html,body{margin:0;background:#000;width:1200px;height:630px;overflow:hidden}
+  *,*::before,*::after{animation:none!important}
+  .og{position:relative;width:1200px;height:630px;overflow:hidden;background:#000}
+  .og .hero__art{position:absolute;top:0;right:0;bottom:0;width:62%;
+    -webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent);mask-image:linear-gradient(to bottom,#000 70%,transparent)}
+  .og .hero__art img{width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block}
+  .og .halo{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .og .halo circle{fill:none;stroke:#4F7CAC;stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-dasharray:none;stroke-dashoffset:0}
+  .og .hero__text{position:absolute;left:72px;bottom:96px;z-index:2}
+  .og .hero__name{font:400 118px/0.92 "Bodoni Moda",serif;letter-spacing:-0.012em;color:#4F7CAC;margin:0 0 26px}
+  .og .hero__name span{display:block}.og .hero__name span+span{padding-left:.72em}
+  .og .hero__role{margin:0;font:400 13px/1 ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;letter-spacing:.26em;text-transform:uppercase;color:#4F7CAC}
+  .og .credit{position:absolute;right:40px;bottom:28px;z-index:2;font:400 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:#6b655c;margin:0}
+</style></head><body>
+<div class="og">
+  <div class="hero__art">
+    <img src="assets/img/hero-halo-1400.webp" width="1400" height="1645" alt="">
+    <svg class="halo" viewBox="0 0 1400 1645" preserveAspectRatio="xMidYMin slice"><circle cx="812" cy="268" r="182"/></svg>
+  </div>
+  <div class="hero__text">
+    <h1 class="hero__name"><span>Arlan</span> <span>Baikurazov</span></h1>
+    <p class="hero__role">Robotics engineer</p>
+  </div>
+  <p class="credit">baikurazov.com</p>
+</div></body></html>
