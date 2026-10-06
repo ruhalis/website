@@ -21,7 +21,8 @@
 :root {
   --black: #000;
   --wine: #3a0c14;               /* the one burgundy band */
-  --saxe: #4F7CAC;               /* the one accent: rings, underlines, focus */
+  --saxe: #4F7CAC;               /* accent: rings, underlines, focus, name, captions (4.8:1 on black) */
+  --claret: #9c2f44;             /* burgundy for large display text only (2.9:1 on black) */
   --ink: #ece7dc;                /* 17:1 on black */
   --mute: #8f877a;               /* 5.7:1 on black, 4.8:1 on the band */
   --rule: rgba(143, 135, 122, .26);
@@ -169,13 +170,13 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 .hero__name {
   font: 400 clamp(3.4rem, 8.2vw, 8rem)/0.92 var(--serif);
   letter-spacing: -0.012em;
-  color: var(--ink);
+  color: var(--saxe);
   margin-bottom: 1.75rem;
 }
 .hero__name span { display: block; }
 .hero__name span + span { padding-left: 0.72em; }
 
-.hero__role { margin-bottom: .6rem; }
+.hero__role { margin-bottom: .6rem; color: var(--saxe); }
 .hero__intro { max-width: 24rem; color: var(--mute); margin-bottom: 1.4rem; }
 .hero__go { display: flex; flex-wrap: wrap; gap: .5rem 2.25rem; }
 
@@ -209,6 +210,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   font: 400 clamp(1.6rem, 2.6vw, 2.1rem)/1.1 var(--serif);
   font-variant-caps: small-caps;
   letter-spacing: .06em;
+  color: var(--claret);
 }
 .projects__head .label { letter-spacing: .08em; text-transform: none; }
 
@@ -227,7 +229,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   font: 500 1.45rem/1.15 var(--serif);
   font-variant-caps: small-caps;
   letter-spacing: .04em;
-  color: var(--ink);
+  color: var(--claret);
   margin-bottom: .8rem;
 }
 
@@ -256,7 +258,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   margin-top: .6rem;
   font: 400 .72rem/1.5 var(--mono);
   letter-spacing: .04em;
-  color: var(--mute);
+  color: var(--saxe);
 }
 .plate__fig { margin-right: auto; }
 .plate__note { white-space: nowrap; font-variant-numeric: tabular-nums; }
@@ -350,6 +352,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 #about .quiet { margin-bottom: 1.5rem; }
 .band .quiet { color: #a99e8e; }   /* a touch lighter on the burgundy: 5.6:1 */
 .band .label { color: #a99e8e; }
+.band h2.label { color: var(--saxe); }   /* headings on the band: Saxe, 3.9:1 */
 
 .contact li {
   display: grid;

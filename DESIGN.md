@@ -1,4 +1,14 @@
-# Design 13: Saxe halo
+# Design 13d: Saxe halo, blue and burgundy
+
+Variant: design 13 unchanged except for text colour. The stepped name, the role line and the
+monospace plate captions are Saxe blue #4F7CAC; the "Projects" heading and the six small-caps
+plate titles are a legible burgundy #9c2f44. On the dark burgundy band the "About" and "Contact"
+headings are Saxe blue instead. Body paragraphs stay off-white/muted; rules stay grey.
+Contrast (WCAG): Saxe on black 4.81:1; #9c2f44 on black 2.90:1 (display sizes only, 1.45rem+,
+just under 3:1); Saxe on band #3a0c14 3.87:1; ink #ece7dc on black 17.03:1, on band 13.71:1;
+band muted #a99e8e on band 6.41:1.
+
+## Base: design 13, Saxe halo
 
 Concept: design 05's dark rider, design 01's stepped name and design 07's plates, on pure black.
 The rider from David's "Napoleon Crossing the Alps" is a very dark greyscale cut-out dissolving
