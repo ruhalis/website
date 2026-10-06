@@ -208,9 +208,8 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   border-bottom: 1px solid var(--rule);
 }
 .projects__head h2 {
-  font: 400 clamp(1.6rem, 2.6vw, 2.1rem)/1.1 var(--serif);
-  font-variant-caps: small-caps;
-  letter-spacing: .06em;
+  font: 600 clamp(1.5rem, 2.4vw, 1.9rem)/1.1 var(--sans);
+  letter-spacing: -0.005em;
   color: var(--claret);
 }
 .projects__head .label { letter-spacing: .08em; text-transform: none; }
@@ -227,9 +226,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   scroll-margin-top: 1.5rem;
 }
 .work__title {
-  font: 500 1.45rem/1.15 var(--serif);
-  font-variant-caps: small-caps;
-  letter-spacing: .04em;
+  font: 600 1.3rem/1.2 var(--sans);
   color: var(--claret);
   margin-bottom: .8rem;
 }
