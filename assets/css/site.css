@@ -337,6 +337,21 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 .band .label { color: #c7ccd8; }
 .band h2.label { color: var(--saxe); }   /* headings on the band: Saxe, 7.6:1 */
 
+/* experience: dates in the label column, like the contact list */
+.experience { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+.experience li {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+  padding: .55rem 0;
+  border-top: 1px solid var(--rule);
+}
+.experience li:first-child { border-top: 0; }
+.experience b { font-weight: 400; color: var(--ink); }
+#experience .quiet { margin-bottom: .5rem; }
+#contact { grid-column: 1 / -1; }
+
 .contact li {
   display: grid;
   grid-template-columns: 6.5rem minmax(0, 1fr);
@@ -381,7 +396,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   .columns { columns: 1; }
   .plate--tall .plate__screen { max-width: 16rem; }
   .band { grid-template-columns: 1fr; }
-  .contact li { grid-template-columns: 1fr; gap: .1rem; }
+  .contact li, .experience li { grid-template-columns: 1fr; gap: .1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

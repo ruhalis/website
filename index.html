@@ -55,6 +55,7 @@
       <ul class="top__nav">
         <li><a href="#projects">Projects</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -214,7 +215,7 @@
       </div>
     </section>
 
-    <!-- The one colour band, navy: About and Contact. -->
+    <!-- The one colour band, navy: About, Experience and Contact. -->
     <div class="band">
       <section class="band__part" id="about" aria-labelledby="about-title">
         <h2 class="label" id="about-title">About</h2>
@@ -223,6 +224,21 @@
           <p class="quiet">From February to May 2026 I worked as a robotics engineer at XBOT, the authorised Unitree Robotics distributor in Almaty.</p>
           <p><a href="assets/Arlan-Baikurazov-CV.pdf" download>Download CV</a></p>
         </div>
+      </section>
+
+      <section class="band__part" id="experience" aria-labelledby="experience-title">
+        <h2 class="label" id="experience-title">Experience</h2>
+        <!-- One line per role, newest first. The full record is in the CV. -->
+        <ol class="experience">
+          <li><span class="label">2026 –</span> <span><b>Robotics Engineer, Circle</b><br><span class="quiet">A voice-assistant device on ESP32 and ESP-IDF: a HUB75 LED-matrix face driver written from scratch, full-duplex I2S audio over TCP, on-device wake word, and a Claude-based speech pipeline. Enclosure and single-supply power design.</span></span></li>
+          <li><span class="label">2026</span> <span><b>Robotics Engineer, XBOT</b><br><span class="quiet">SLAM navigation on Unitree robots in ROS 2, and a voice agent with local LLM, speech and wake word on Jetson Orin NX.</span></span></li>
+          <li><span class="label">2025 – 26</span> <span><b>Machine Learning Engineer, Avto-time</b><br><span class="quiet">Licence-plate recognition from RTSP cameras with YOLO and OCR, logged to PostgreSQL.</span></span></li>
+          <li><span class="label">2025</span> <span><b>Go2 inspection researcher, KBTU</b><br><span class="quiet">Autonomous building inspection with YOLOv11, indoor localisation and planning, and elevator use with an arm on the quadruped.</span></span></li>
+          <li><span class="label">2025</span> <span><b>Quadruped hackathon, Astana</b><br><span class="quiet">First place: SLAM navigation and a web control interface over a custom ROS 2 bridge.</span></span></li>
+          <li><span class="label">2024 – 25</span> <span><b>Machine Learning Engineer, Doro AI</b><br><span class="quiet">Fine-tuned vision models and GANs, served with FastAPI. Google for Startups participant.</span></span></li>
+        </ol>
+        <p class="quiet">BEng Robotics and Mechatronics, Kazakh-British Technical University, 2022 – 2027.</p>
+        <p class="quiet">Tools: ROS 2, Isaac Sim and Isaac Lab, PyTorch, OpenCV, Python, C++, Docker, NVIDIA Jetson.</p>
       </section>
 
       <section class="band__part" id="contact" aria-labelledby="contact-title">
