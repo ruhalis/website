@@ -1,4 +1,15 @@
-# Design 13f: Saxe halo, blue and burgundy, lifted
+# Design 13g: Saxe halo, all blue, posters in colour
+
+Variant: design 13f with the burgundy gone and the posters lifted. The band is navy #15284d
+(was burgundy #5a1828); the "Projects" heading and the six plate titles are Saxe, so blue is
+the page's one colour. Saxe is brighter: #9bbdf0 (10.9:1 on black, 7.6:1 on the band; was
+#84aee3). Band muted text is a cool grey #c7ccd8 (9.0:1). The posters are no longer crushed
+greyscale: tools/dark-posters.py now writes the frame itself, in colour, at 80% (a linear
+multiply, no curve), and the CSS brightness(1.25) on them is gone, so the still sits exactly
+one step below the footage and lifts to it on play. The burgundy values are kept below for
+reference.
+
+## Previous: design 13f
 
 Variant: design 13d with more contrast so the page reads less dark. Field stays pure black; the
 band is a visible burgundy #5a1828 (was #3a0c14); headings and plate titles #dc5f7b (6.0:1, was

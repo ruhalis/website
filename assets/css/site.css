@@ -1,7 +1,7 @@
 /* baikurazov.com — "Saxe halo"
    Pure black. The rider from David's painting, dark greyscale, dissolves into it;
    one thin Saxe-blue ring around his head. The six projects follow at once as two
-   columns of plates. One dark burgundy band carries About and Contact. */
+   columns of plates. One dark navy band carries About and Contact. */
 
 @font-face {
   font-family: "Bodoni Moda";
@@ -20,9 +20,8 @@
 
 :root {
   --black: #000;
-  --wine: #5a1828;               /* the one burgundy band */
-  --saxe: #84aee3;               /* accent: rings, underlines, focus, name, captions (9.1:1 on black) */
-  --claret: #dc5f7b;             /* burgundy for headings and plate titles (6.0:1 on black) */
+  --navy: #15284d;               /* the one colour band (was burgundy #5a1828) */
+  --saxe: #9bbdf0;               /* accent: rings, underlines, focus, name, headings, captions (10.9:1 on black, 7.6:1 on the band) */
   --ink: #f8f5ef;                /* 19:1 on black */
   --mute: #bdb5a8;               /* 10:1 on black, 6.5:1 on the band */
   --rule: rgba(170, 162, 148, .32);
@@ -209,7 +208,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 }
 .projects__head h2 {
   font: 300 clamp(1.5rem, 2.4vw, 1.9rem)/1.1 var(--sans);
-  color: var(--claret);
+  color: var(--saxe);
 }
 .projects__head .label { letter-spacing: .08em; text-transform: none; }
 
@@ -226,7 +225,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
 }
 .work__title {
   font: 300 1.3rem/1.2 var(--sans);
-  color: var(--claret);
+  color: var(--saxe);
   margin-bottom: .8rem;
 }
 
@@ -246,7 +245,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   object-fit: contain;
   background: var(--black);
 }
-.plate__screen > img { filter: brightness(1.25); }   /* posters a step lighter than the footage's black */
+/* posters are the frame itself at 80% (tools/dark-posters.py), so no filter here */
 .plate__poster { display: none; }
 
 .plate__cap {
@@ -316,9 +315,9 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   padding-top: .12em;
 }
 
-/* ---------- the burgundy band: about, contact ---------- */
+/* ---------- the navy band: about, contact ---------- */
 .band {
-  background: var(--wine);
+  background: var(--navy);
   margin-top: clamp(3rem, 8vh, 6rem);
   padding: clamp(3.5rem, 9vh, 6.5rem) var(--side);
   display: grid;
@@ -334,9 +333,9 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   margin-bottom: 1.25rem;
 }
 #about .quiet { margin-bottom: 1.5rem; }
-.band .quiet { color: #cdbfb0; }   /* a touch lighter on the burgundy: 7.3:1 */
-.band .label { color: #cdbfb0; }
-.band h2.label { color: var(--saxe); }   /* headings on the band: Saxe, 5.7:1 */
+.band .quiet { color: #c7ccd8; }   /* cool grey on the navy: 9.0:1 */
+.band .label { color: #c7ccd8; }
+.band h2.label { color: var(--saxe); }   /* headings on the band: Saxe, 7.6:1 */
 
 .contact li {
   display: grid;
