@@ -87,6 +87,7 @@ if want posters; then
   poster unitree-g1-voice-control                5.84 --auto-levels 35,99.5
   poster unitree-g1-web-control                100.24 --invert --auto-levels 45,99.5
   poster unitree-go2-inside-building-inspection 62.99 --levels 0.2,0.95 --gamma 0.8 --contrast 0.5
+  poster isaac-l2f-figure-eight                  6.50 --auto-levels 35,99.5
 fi
 
 cat > "$OUT/palette.json" <<'JSON'
