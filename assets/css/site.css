@@ -223,7 +223,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   padding-bottom: clamp(2.75rem, 5vw, 4rem);
   scroll-margin-top: 1.5rem;
 }
-/* a composite that needs the width spans both columns, below the six */
+/* a composite that needs the width spans both columns, above the six */
 .work--wide { column-span: all; }
 .work--wide .work__text { max-width: 40rem; }
 .work__title {
