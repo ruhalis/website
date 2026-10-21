@@ -238,7 +238,7 @@ a:hover { color: #fff; text-decoration-color: var(--ink); }
   aspect-ratio: var(--ar, 16 / 9);
   background: var(--black);
 }
-.plate--tall .plate__screen { max-width: min(100%, 19rem); }
+.plate--tall .plate__screen { max-width: min(100%, 19rem); margin-inline: auto; }
 .plate__screen > img,
 .plate__screen > video {
   position: absolute;
