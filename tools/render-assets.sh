@@ -77,6 +77,8 @@ if want posters; then
   poster() { # name  timestamp  duotone options...
     local name="$1" t="$2"; shift 2
     "$FFMPEG" -v error -y -ss "$t" -i "videos/$name.mp4" -frames:v 1 "$TMP/$name.png"
+    # the page shows -dark.webp: made from the lossless frame, at the video's own size
+    uv run tools/dark-posters.py "$OUT/posters" "$TMP/$name.png"
     "${DUO[@]}" "$TMP/$name.png" "$OUT/posters/$name.jpg" --long-side 1280 --clean --quality 82
     "${DUO[@]}" "$TMP/$name.png" "$OUT/posters/$name-blue.webp" --long-side 1280 --quality 68 "$@"
   }
